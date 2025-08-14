@@ -1,0 +1,17 @@
+LOGIN:
+    Email: bao@gmail.com
+    Pass: Bao123@
+VOUCHER:
+    Code: DISCOUNT20 (Valid until 2025/12/31. Applies to orders over 2,500,000 VND.)
+MOMO PAYMENT:
+    - ATM card:
+        + Name: NGUYEN VAN A
+        + Number: 9704 0000 0000 0018
+        + Card Expdate: 03/07
+        + OTP: OTP
+    - Credit Cards:
+        + Name: NGUYEN VAN A
+        + Number: 5200 0000 0000 1096
+        + Card Expdate: 05/26
+        + CVC: 111
+        + OTP: OTP

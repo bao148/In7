@@ -1,0 +1,101 @@
+<div class="page-wrapper">
+    <!-- Sidebar Page Container -->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <br>
+            <div class="row clearfix">
+                <!--Content Side-->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                    <div class="blog-detail">
+                        <!-- News Block -->
+                        <div class="news-block-two">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <figure class="image">
+                                        <!-- Display post image from API -->
+                                        <img *ngIf="post.image_url && !isFile; else defaultImage"
+                                            [src]="getImageUrl(post.image_url)" alt="{{ post.title }}">
+                                        <ng-template #defaultImage>
+                                        </ng-template>
+                                    </figure>
+                                </div>
+                                <div class="caption-box">
+                                    <div class="inner">
+                                        <!-- Display post title -->
+                                        <h3>{{ post.title }}</h3>
+                                        <ul class="info">
+                                            <li>{{ post.created_at | date: 'dd MMMM yyyy' }}</li>
+                                            <li><a href="#">{{ post.author_name }}</a></li>
+                                        </ul>
+                                        <!-- Display post content -->
+                                        <p>{{ post.content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <!-- <div class="tags clearfix">
+                            <span class="title">Từ khóa:</span>
+                            <ul>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Financial</a></li>
+                                <li><a href="#">Life</a></li>
+                                <li><a href="#">Investment</a></li>
+                            </ul>
+                        </div> -->
+
+                        <!-- Share Option -->
+                        <div class="share-option" style="color: #ffffff">
+                            <span class="title">Chia sẻ:</span>
+                            <ul class="social-icon-colored clearfix">
+                                <li class="facebook" (click)="copyLink(post.id)"><a href="
+                                    https://vi-vn.facebook.com/"><i class="fa fa-facebook"></i>Facebook</a></li>
+
+                                <li class="twitter"><a href="
+                                    https://x.com/"><i class="fa fa-twitter"></i>Twitter</a></li>
+
+                                <li class="facebook" (click)="copyLink(post.id)"><a><i class="fa fa-copy"></i>Sao Chép Liên Kết</a>
+                                </li>
+                                <!-- <li class="mail"><a><i class="fa fa-envelope"></i>Mail to Friends</a></li> -->
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                    <aside class="sidebar default-sidebar">
+
+
+
+
+
+                        <!-- Latest News -->
+                        <div class="sidebar-widget latest-news">
+                            <div class="sidebar-title">
+                                <h3>Bài viết liên quan</h3>
+                            </div>
+                            <div class="widget-content" >
+                                    <article class="post" *ngFor="let post of posts | slice:0:2">
+                                        <div class="image-box">
+                                        <figure class="image_url">
+                                            <img [src]="getImageUrl(post.image_url)" alt="{{ post.title }}">
+                                        </figure>
+                                        </div>
+                                        <h3><a [routerLink]="['/blog/blog-detail', post.id]">{{ post.title }}</a></h3>
+                                    </article>
+
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar Container -->
+</div>

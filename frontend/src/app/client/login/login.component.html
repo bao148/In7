@@ -1,0 +1,84 @@
+<div class="d-lg-flex half">
+  <div
+    class="bg order-1 order-md-2"
+    style="background-image: url('/assets/client/images/gallery/2-7.jpg')"
+  ></div>
+  <div class="contents order-2 order-md-1 bg-form">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7">
+          <h3 class="mb-4"><strong>Đăng Nhập</strong></h3>
+          <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+            <div class="form-group">
+              <label for="username">Email:</label>
+              <input
+                type="email"
+                id="username"
+                formControlName="username"
+                required
+                class="form-control"
+                placeholder="Nhập email của bạn"
+              />
+              <small
+                *ngIf="
+                  loginForm.get('username')?.invalid &&
+                  loginForm.get('username')?.touched
+                "
+                class="error-message"
+              >
+                Email là bắt buộc và phải hợp lệ.
+              </small>
+            </div>
+            <div class="form-group mt-4 mb-4">
+              <label for="password">Mật Khẩu:</label>
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                required
+                class="form-control"
+                placeholder="Nhập mật khẩu của bạn"
+              />
+              <small
+                *ngIf="
+                  loginForm.get('password')?.invalid &&
+                  loginForm.get('password')?.touched
+                "
+                class="error-message"
+              >
+                Mật khẩu là bắt buộc.
+              </small>
+            </div>
+            <div class="text-center mt-1">
+              <label class="d-flex justify-content-start align-items-center">
+                <input
+                  type="checkbox"
+                  (change)="togglePasswordVisibility()"
+                  [checked]="showPassword"
+                  class="me-2"
+                />
+                Hiển thị mật khẩu
+              </label>
+            </div>            
+            <div class="text-center mt-3 link-group">
+              <span>Bạn chưa có tài khoản? </span>
+              <a routerLink="/register">Đăng ký</a>
+            </div>
+            <div class="text-center mt-2 mb-4 link-group">
+              <span>Bạn quên mật khẩu? </span>
+              <a routerLink="/forgot-password">Khôi phục mật khẩu</a>
+            </div>
+            <button class="btn col-12 mt-4" id="google-signin-btn">Login with Google</button>
+            <button
+              type="submit"
+              class="btn btn-block btn-primary col-12 mt-4"
+              [disabled]="loginForm.invalid"
+            >
+              Đăng Nhập
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

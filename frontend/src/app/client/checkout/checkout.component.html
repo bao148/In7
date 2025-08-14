@@ -1,0 +1,297 @@
+<!--CheckOut Page-->
+<div class="checkout-page mt-5">
+  <div class="auto-container">
+    <!--Checkout Details-->
+    <div class="checkout-form">
+      <form>
+        <div class="row clearfix">
+          <!-- Column: Thanh toán thông tin -->
+          <div class="column col-lg-5 col-md-12">
+            <div class="sec-title">
+              <h3>Chi tiết thanh toán</h3>
+            </div>
+
+            <div class="row clearfix">
+              <!-- Form Group: Họ và tên -->
+              <div class="form-group col-md-12 col-sm-12">
+                <div class="field-label">
+                  Họ và Tên<sup class="text-danger">*</sup>
+                </div>
+                <input
+                  type="text"
+                  name="name"
+                  [(ngModel)]="user.name"
+                  placeholder=""
+                />
+              </div>
+
+              <!-- Form Group: Email -->
+              <div class="form-group col-md-12 col-sm-12">
+                <div class="field-label">
+                  Email<sup class="text-danger">*</sup>
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  [(ngModel)]="user.email"
+                  placeholder=""
+                  disabled
+                />
+              </div>
+
+              <!-- Số điện thoại -->
+              <div class="form-group col-md-12 col-sm-12">
+                <div class="field-label">
+                  Số điện thoại<sup class="text-danger">*</sup>
+                </div>
+                <input
+                  type="text"
+                  name="phone"
+                  [(ngModel)]="user.phoneNumber"
+                  placeholder="Nhập số điện thoại"
+                  [ngClass]="{ 'is-invalid': errors.phone }"
+                />
+                <div class="text-danger" *ngIf="errors.phone">
+                  {{ errors.phone }}
+                </div>
+                <!-- Hiển thị lỗi -->
+              </div>
+
+              <!-- Tỉnh -->
+              <div class="form-group col-md-12">
+                <div class="field-label">
+                  Tỉnh Thành<sup class="text-danger">*</sup>
+                </div>
+                <select
+                  class="css_select"
+                  [(ngModel)]="selectedTinh"
+                  name="tinh"
+                  (change)="loadQuanHuyen()"
+                  [ngClass]="{ 'is-invalid': errors.tinh }"
+                >
+                  <option value="">Chọn Tỉnh Thành</option>
+                  <option *ngFor="let tinh of tinhThanh" [value]="tinh.id">
+                    {{ tinh.full_name }}
+                  </option>
+                </select>
+                <div class="text-danger" *ngIf="errors.tinh">
+                  {{ errors.tinh }}
+                </div>
+              </div>
+
+              <!-- Quận -->
+              <div class="form-group col-md-12">
+                <div class="field-label">
+                  Quận Huyện<sup class="text-danger">*</sup>
+                </div>
+                <select
+                  class="css_select"
+                  [(ngModel)]="selectedQuan"
+                  name="quan"
+                  (change)="loadPhuongXa()"
+                  [ngClass]="{ 'is-invalid': errors.quan }"
+                >
+                  <option value="">Chọn Quận Huyện</option>
+                  <option *ngFor="let quan of quanHuyen" [value]="quan.id">
+                    {{ quan.full_name }}
+                  </option>
+                </select>
+                <div class="text-danger" *ngIf="errors.quan">
+                  {{ errors.quan }}
+                </div>
+              </div>
+
+              <!-- Phường -->
+              <div class="form-group col-md-12">
+                <div class="field-label">
+                  Phường Xã<sup class="text-danger">*</sup>
+                </div>
+                <select
+                  class="css_select"
+                  [(ngModel)]="selectedPhuong"
+                  name="phuong"
+                  [ngClass]="{ 'is-invalid': errors.phuong }"
+                >
+                  <option value="">Chọn Phường Xã</option>
+                  <option *ngFor="let phuong of phuongXa" [value]="phuong.id">
+                    {{ phuong.full_name }}
+                  </option>
+                </select>
+                <div class="text-danger" *ngIf="errors.phuong">
+                  {{ errors.phuong }}
+                </div>
+              </div>
+
+              <!-- Nhập chi tiết địa chỉ -->
+              <div class="form-group col-md-12">
+                <div class="field-label">
+                  Địa chỉ chi tiết<sup class="text-danger">*</sup>
+                </div>
+                <input
+                  type="text"
+                  [(ngModel)]="user.address"
+                  name="address"
+                  placeholder="Số nhà, tên đường"
+                  [ngClass]="{ 'is-invalid': errors.address }"
+                />
+                <div class="text-danger" *ngIf="errors.address">
+                  {{ errors.address }}
+                </div>
+              </div>
+
+              <!-- Form Group: Ghi chú -->
+              <div class="form-group col-md-12 col-sm-12">
+                <div class="field-label">Ghi chú</div>
+                <textarea
+                  class="form-control"
+                  name="note"
+                  placeholder="Ghi chú của khách hàng"
+                  [(ngModel)]="user.note"  
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Box: Product Details and Total -->
+          <div class="column col-lg-7 col-md-12 col-sm-12">
+            <div class="order-box">
+              <div class="sec-title">
+                <h2>Đơn hàng</h2>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">SẢN PHẨM</th>
+                      <th scope="col">ĐƠN GIÁ</th>
+                      <th scope="col">SỐ LƯỢNG</th>
+                      <th scope="col">TỔNG</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of cartItems">
+                      <!-- Product Name -->
+                      <td>
+                        {{
+                          item.name.length > 20
+                            ? (item.name | slice : 0 : 20) + "..."
+                            : item.name
+                        }}
+                      </td>
+                      <td>
+                          <ng-container *ngIf="item.discount > 0; else noDiscount">
+                            <span class="discount-price text-danger me-2">
+                              {{ convertCommaToDot((item.price - (item.price * (item.discount / 100))) | number:'1.0-0') }} ₫
+                            </span>
+                          <span class="old-price text-dark" style="text-decoration: line-through;">
+                              {{ convertCommaToDot(item.price | number:'1.0-0') }} ₫
+                          </span>
+                          </ng-container>
+                          
+                          <ng-template #noDiscount>
+                              <!-- Show total price without discount -->
+                              <span class="text-danger me-2">
+                                {{ convertCommaToDot(item.price | number:'1.0-0') }} ₫
+                              </span>                        
+                          </ng-template>
+                    </td>
+                      <!-- Quantity -->
+                      <td class="text-center">{{ item.quantity }}</td>
+
+                      <!-- Price -->
+                      <td>
+                        <ng-container *ngIf="item.discount > 0; else noDiscountTotal">
+                          <!-- Hiển thị tổng tiền sau khi giảm giá -->
+                          {{ convertCommaToDot((item.price - (item.price * (item.discount / 100))) * item.quantity | number:'1.0-0') }} ₫
+                        </ng-container>
+                        <ng-template #noDiscountTotal>
+                          <!-- Hiển thị tổng tiền nếu không có giảm giá -->
+                          {{ convertCommaToDot(item.price * item.quantity | number:'1.0-0') }} ₫
+                        </ng-template>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul>
+                <!-- Total price -->
+                <li *ngIf="appliedVoucher" class="clearfix">
+                  <div hidden>{{ appliedVoucher.id }}</div>
+                  <strong>Voucher:</strong>
+                  <span>{{ appliedVoucher.voucher_code }} - Giảm {{ appliedVoucher.discount_percent }}%</span>
+                </li>
+                <li  class="clearfix">
+                  <strong>TỔNG TIỀN</strong>
+                  <span>{{ convertCommaToDot(getTotal() | number : "1.0-0") }} ₫</span>
+                </li>
+                
+                <li class="clearfix">
+                  <strong>VẬN CHUYỂN</strong>
+                  <span class="free">Miễn phí vận chuyển</span>
+                </li>
+                <li class="clearfix">
+                  <strong>TỔNG CỘNG</strong>
+                  <span>{{ convertCommaToDot(getTotal() | number : "1.0-0") }} ₫</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End Order Box -->
+
+          <!-- Payment Box -->
+          <div class="payment-box">
+            <div class="upper-box">
+              <div class="payment-options">
+                <ul>
+                  <li>
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        name="payment-group"
+                        id="payment-momo"
+                        [(ngModel)]="paymentMethod"
+                        value="momo"
+                        checked
+                      />
+                      <label for="payment-momo"
+                        ><strong>Thanh toán qua MoMo</strong></label
+                      >
+                    </div>
+                  </li>
+                  <li>
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        name="payment-group"
+                        id="payment-cod"
+                        [(ngModel)]="paymentMethod"
+                        value="cod"
+                      />
+                      <label for="payment-cod"
+                        ><strong>Thanh toán khi nhận hàng</strong></label
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="lower-box text-right">
+              <!-- <button class="theme-btn btn-style-one" type="button" (click)="calculateShippingFee()">Tính phí vận chuyển</button> -->
+              <button class="theme-btn btn-style-one" (click)="onCheckout()">
+                Tiến hành thanh toán
+              </button>
+            </div>
+          </div>
+          <!-- End Payment Box-->
+        </div>
+      </form>
+      <!-- <div>
+        <button (click)="getShippingFee()">Tính phí vận chuyển</button>
+        <div *ngIf="shippingFee">
+          <p>Phí vận chuyển: {{ shippingFee?.fee?.fee }}</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+

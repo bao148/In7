@@ -1,0 +1,24 @@
+/* Đảm bảo error-container chiếm toàn bộ chiều cao màn hình */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Thiết lập kích thước biểu tượng */
+.error-icon i {
+  font-size: 4rem;
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+/* Căn giữa các nút */
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}

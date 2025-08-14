@@ -1,0 +1,393 @@
+/* Footer Styles */
+footer.main-footer {
+  background-color: #555555;
+  color: #fff;
+  /* padding: 10px 10px; */
+}
+
+footer .auto-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+footer .footer-widget {
+  flex: 1 1 250px;
+  padding: 10px;
+  min-width: 200px;
+}
+
+footer .footer-logo img {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+footer .widget-content li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+footer .widget-content a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+footer .widget-content a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+footer .social-links ul {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+footer .social-links ul li a {
+  color: #fff;
+  font-size: 20px;
+}
+
+footer .social-links ul li a:hover {
+  color: #f39c12;
+}
+
+footer .footer-bottom {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer .copyright-text {
+  font-size: 12px;
+}
+
+footer .copyright-text a {
+  color: #f39c12;
+  text-decoration: none;
+}
+
+footer .copyright-text a:hover {
+  text-decoration: underline;
+}
+
+footer iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  footer .auto-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .footer-widget {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  footer .social-links ul {
+    justify-content: center;
+  }
+
+  footer iframe {
+    height: 180px;
+  }
+}
+
+
+@-webkit-keyframes pulse{
+  0%{
+    -webkit-transform: scale(0.9);
+  }
+  50%{
+    -webkit-transform: scale(1.1);
+  }
+  100%{ 
+    -webkit-transform: scale(0.9);
+  }
+}
+.mypage-alo-phone {
+    position: fixed;
+    right: -5px;
+    bottom:130px;
+    visibility: visible;
+    background-color: transparent;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    z-index: 200000 !important;
+}
+.mypage-alo-ph-img-circle {
+        width: 30px;
+        height: 30px;
+        top: 43px;
+        left: 43px;
+        position: absolute;
+        background:  url(https://i.imgur.com/J9AXAq7.png) no-repeat center center;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        border: 2px solid transparent;
+        opacity: .7;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        background-color: #24af75;
+        background-size: 70%;
+      -webkit-animation: pulse 01s infinite;
+}
+.mypage-alo-ph-circle-fill {
+  
+    width: 60px;
+    height: 60px;
+    top: 28px;
+    left: 28px;
+    position: absolute;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    background-color: rgba(5, 241, 131, 0.5);
+    opacity: .75 !important;
+    -webkit-animation: pulse 1s infinite;
+}
+.mypage-alo-ph-circle{
+    width: 90px;
+    height: 90px;
+    top: 12px;
+    left: 12px;
+    position: absolute;
+    background-color: transparent;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid rgba(30, 30, 30, 0.4);
+    opacity: .1;
+    border-color:#ffb56b;
+    opacity: .5;
+}
+/* Khung Chatbot */
+/* Nút toggle Chatbot */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 80px; /* Đẩy lên một chút để không bị đè bởi nút gọi */
+  right: 20px;
+  background-color: #24af75; /* Màu sắc đồng bộ với nút gọi */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Đảm bảo hiển thị trên các phần tử khác */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+/* Khung Chatbot */
+.chatbot-box {
+  position: fixed;
+  bottom: 150px; /* Đẩy lên để tránh các nút */
+  right: 20px;
+  width: 350px;
+  height: 450px; /* Tăng chiều cao của khung chat */
+  background: #ffffff;
+  border: 2px solid #24af75;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1500;
+}
+
+/* Header Chatbot */
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #24af75;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Nút đóng khung chat */
+.close-chat {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Tin nhắn */
+.chatbot-messages {
+  flex: 1 1 auto; /* Cho phép phần tin nhắn giãn nở */
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 400px; /* Giới hạn chiều cao */
+  overflow-x: hidden; /* Tránh cuộn ngang */
+}
+
+/* Tin nhắn người dùng và bot */
+.message-user, .message-bot {
+  margin-bottom: 10px;
+}
+
+/* Phần tin nhắn người dùng */
+.message-user .message-content, .message-bot .message-content {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  word-wrap: break-word;  /* Đảm bảo tin nhắn không bị cắt khi dài */
+  white-space: pre-wrap;  /* Cho phép xuống dòng tự động */
+}
+
+/* Icon người dùng */
+.message-user .message-content i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Tin nhắn người dùng */
+.message-user .message-content {
+  background-color: #24af75;
+}
+
+/* Icon bot */
+.message-bot .message-content i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Tin nhắn bot */
+.message-bot .message-content {
+  background-color: #42afc5;
+  max-height: none;  /* Cho phép chiều cao không giới hạn */
+  overflow-y: auto; /* Cho phép cuộn khi tin nhắn dài */
+  word-wrap: break-word;  /* Đảm bảo tin nhắn không bị cắt khi dài */
+  white-space: pre-wrap;  /* Cho phép xuống dòng tự động */
+  flex-grow: 1; /* Đảm bảo tin nhắn bot giãn nở hết phần không gian còn lại */
+}
+
+/* Khu vực Nhập Tin nhắn */
+.chatbot-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Input tin nhắn */
+.chatbot-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* Nút gửi tin nhắn */
+.send-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  border: none;
+  background-color: #24af75;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #1d9b68;
+}
+
+.send-btn i {
+  font-size: 18px; /* Kích thước biểu tượng */
+  margin-right: 0;
+}
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.quick-replies .btn {
+  flex: 1 0 auto;
+  white-space: nowrap;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #18b996; /* Màu xanh */
+  color: #fff; /* Màu trắng cho icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; /* Ẩn khi không cần */
+  visibility: hidden;
+}
+
+.scroll-to-top.fade-out {
+  opacity: 1; /* Hiển thị */
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background-color: #83878b; /* Màu xanh đậm khi hover */
+  transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+.scroll-to-top .fa-arrow-up {
+  font-size: 20px; /* Kích thước của icon */
+}
+
+

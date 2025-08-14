@@ -1,0 +1,70 @@
+.card-footer {
+  padding: 0.3rem; /* Thu nhỏ khoảng cách bên trong */
+}
+
+.card-footer .btn {
+  font-size: 0.7rem; /* Giảm kích thước chữ */
+  padding: 2px 6px; /* Giảm kích thước nút */
+  border-radius: 3px; /* Bo góc nhỏ hơn */
+}
+
+.card-footer .btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.card-footer .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.card-footer .btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.card-footer .btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.card-footer .btn i {
+  font-size: 0.9rem; /* Icon nhỏ hơn */
+  margin-right: 3px; /* Giảm khoảng cách giữa icon và chữ */
+}
+.card-footer {
+  padding: 0.2rem; /* Giảm khoảng cách bên trong */
+}
+
+.card-footer .btn {
+  font-size: 0.65rem; /* Chữ nhỏ hơn một chút */
+  padding: 1px 4px; /* Thu nhỏ nút thêm */
+  border-radius: 3px; /* Bo góc nhỏ hơn */
+}
+
+.card-footer .btn i {
+  font-size: 0.8rem; /* Icon nhỏ hơn */
+  margin-right: 2px; /* Giảm khoảng cách icon và chữ */
+}
+.styled-pagination .pagination .page-item .page-link {
+  padding: 5px 12px; /* Giảm kích thước padding */
+  font-size: 20px;  /* Giảm kích thước font */
+  background-color: transparent; /* Xóa nền */
+  border: none; /* Xóa viền */
+  color: #6c757d;  /* Màu chữ */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+.styled-pagination .pagination .page-item .page-link:hover {
+  color: #007bff;  /* Màu chữ khi hover */
+}
+
+.styled-pagination .pagination .page-item.disabled .page-link {
+  color: #d6d6d6;  /* Màu chữ khi nút disabled */
+  pointer-events: none; /* Không thể nhấn khi disabled */
+}
+
+.styled-pagination .pagination .page-item.active .page-link {
+  color: #007bff;  /* Màu chữ cho nút active */
+}

@@ -1,0 +1,113 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+<!-- Sidebar Start -->
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div>
+    <div class="brand-logo d-flex align-items-center justify-content-between">
+      <a routerLink="/admin" class="text-nowrap logo-img">
+      <img src="/assets/client/images/logo-2.png" alt="" width="90px"/>
+        <!-- <img src="../assets/images/logos/logo-light.svg" alt="" /> -->
+      </a>
+      <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer " id="sidebarCollapse" >
+        <i class="ti ti-x fs-8 close-btn" (click)="toggleSidebar()" >
+
+        </i>
+      </div>
+    </div>
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+      <ul id="sidebarnav">
+
+        <li class="sidebar-item">
+          <a class="sidebar-link"routerLink="/admin" aria-expanded="false">
+            <span>
+            <fa-icon [icon]="home"></fa-icon>
+            </span>
+            <strong class="hide-menu">Trang chủ</strong>
+          </a>
+        </li>
+
+
+        <li class="sidebar-item">
+          <a class="sidebar-link"routerLink="/admin/productCategory" aria-expanded="false">
+            <span>
+            <fa-icon [icon]="productCategory"></fa-icon>
+              <!-- <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon> -->
+            </span>
+            <strong class="hide-menu">Danh mục sản phẩm</strong>
+          </a>
+        </li>
+
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/product" aria-expanded="false">
+            <span>
+            <fa-icon [icon]="product"></fa-icon>
+            </span>
+            <strong class="hide-menu">Sản Phẩm</strong>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/postCategory" aria-expanded="false">
+            <span>
+            <fa-icon [icon]="postCategory"></fa-icon>
+            </span>
+            <strong class="hide-menu">Danh mục bài viết</strong>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link"  routerLink="/admin/post" aria-expanded="false">
+            <span>
+              <fa-icon [icon]="post"></fa-icon>
+            </span>
+            <strong class="hide-menu">Bài viết</strong>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/review" aria-expanded="false">
+            <span>
+              <fa-icon [icon]="faComments"></fa-icon> 
+            </span>
+            <strong class="hide-menu">Đánh giá</strong>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/voucher"  aria-expanded="false">
+            <span>
+              <fa-icon [icon]="voucher"></fa-icon>
+            </span>
+            <strong class="hide-menu">Voucher</strong>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/order"  aria-expanded="false">
+            <span>
+              <fa-icon [icon]="order"></fa-icon>
+            </span>
+            <strong class="hide-menu">Đơn hàng</strong>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" routerLink="/admin/user"  aria-expanded="false">
+            <span>
+              <fa-icon [icon]="user"></fa-icon>
+            </span>
+            <strong class="hide-menu">Tài khoản</strong>
+          </a>
+        </li>
+
+        
+
+        <li class="sidebar-item">
+          </li>
+          </ul>
+    </nav>
+    </div>
+</aside>
+</div>

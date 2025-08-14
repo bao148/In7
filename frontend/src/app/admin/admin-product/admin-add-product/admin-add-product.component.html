@@ -1,0 +1,97 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="body-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">THÊM SẢN PHẨM</h5>
+                <div class="table-responsive">
+                  <form #form="ngForm" (ngSubmit)="addProduct()" enctype="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Tên</label>
+                      <input type="text" class="form-control" id="name" [(ngModel)]="product.name" name="name" required #name="ngModel">
+                      <div *ngIf="name.invalid && name.touched" class="text-danger">
+                        Tên sản phẩm là bắt buộc.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Giá</label>
+                      <input type="number" class="form-control" id="price" [(ngModel)]="product.price" name="price" required min="0" #price="ngModel">
+                      <div *ngIf="price.invalid && price.touched" class="text-danger">
+                        Giá là bắt buộc và không được nhỏ hơn 0.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Hình ảnh</label>
+                      <input type="file" class="form-control" id="image" (change)="onFileChange($event)" required>
+                      <div *ngIf="fileError" class="text-danger">
+                        Vui lòng chỉ chọn các tệp hình ảnh (JPG, PNG).
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Mô tả</label>
+                      <textarea class="form-control" id="description" [(ngModel)]="product.description" name="description" required #description="ngModel"></textarea>
+                      <div *ngIf="description.invalid && description.touched" class="text-danger">
+                        Mô tả là bắt buộc.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="discount" class="form-label">Giảm giá(%)</label>
+                      <input type="number" class="form-control" id="discount" [(ngModel)]="product.discount" name="discount" min="0" max="70" #discount="ngModel">
+                      <div *ngIf="discount.invalid && discount.touched" class="text-danger">
+                        Giảm giá phải nằm trong khoảng từ 0 đến 70%.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="quantity" class="form-label">Số lượng</label>
+                      <input type="number" class="form-control" id="quantity" [(ngModel)]="product.quantity" name="quantity" required min="0" #quantity="ngModel">
+                      <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+                        Số lượng là bắt buộc và phải lớn hơn hoặc bằng 0.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="categories_id" class="form-label">Loại sản phẩm</label>
+                      <select id="categories_id" class="form-select" [(ngModel)]="product.categories_id" name="categories_id" required>
+                        <option value="" disabled selected>Chọn loại sản phẩm</option>
+                        <option *ngFor="let category of categories" [value]="category.id">
+                          {{ category.category_name }}
+                        </option>
+                      </select>
+                      <div *ngIf="!product.categories_id && submitted" class="text-danger">
+                        Loại sản phẩm là bắt buộc.
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="status" class="form-label">Trạng thái</label>
+                      <select class="form-select" id="status" [(ngModel)]="product.status" name="status" required #status="ngModel">
+                        <option value="active">Kích hoạt</option>
+                        <option value="inactive">Vô hiệu hóa</option>
+                      </select>
+                      <div *ngIf="status.invalid && status.touched" class="text-danger">
+                        Trạng thái là bắt buộc.
+                      </div>
+                    </div>
+                  
+                    <div *ngIf="form.invalid && (form.dirty || form.touched)" class="alert alert-danger">
+                      Vui lòng kiểm tra lại các trường bắt buộc.
+                    </div>
+                  
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Thêm</button>
+                  </form>                                   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

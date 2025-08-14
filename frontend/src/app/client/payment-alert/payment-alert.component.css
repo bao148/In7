@@ -1,0 +1,26 @@
+
+.success-page a {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+  }
+    
+._success {
+    box-shadow: 0 15px 25px #00000019;
+    padding: 45px;
+    width: 100%;
+    text-align: center;
+    margin: 40px auto;
+    border-bottom: solid 4px #28a745;
+}
+
+._success i {
+    font-size: 55px;
+    color: #28a745;
+}
+

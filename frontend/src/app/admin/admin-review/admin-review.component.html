@@ -1,0 +1,104 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <h3 class="mb-0">QUẢN LÝ ĐÁNH GIÁ</h3>
+          </div>
+          <div class="card mt-3">
+            <div class="card-body">
+              <!-- Bộ lọc -->
+              <div class="d-flex mb-3">
+                <input
+                  type="text"
+                  class="form-control me-2"
+                  placeholder="Tìm kiếm người dùng"
+                  [(ngModel)]="searchName"
+                  (input)="searchByName()"
+                />
+                <select class="form-select me-2" [(ngModel)]="selectedRating" (change)="filterByRating()">
+                  <option value="">Tất cả rating</option>
+                  <option *ngFor="let rating of [1, 2, 3, 4, 5]" [value]="rating">
+                    {{ rating }} sao
+                  </option>
+                </select>
+                
+              </div>
+              <!-- Bảng đánh giá -->
+              <div class="table-responsive">
+                <table class="table" style="text-align: center;">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>STT</th>
+                      <th>Người dùng</th>
+                      <th>ID Sản phẩm</th>
+                      <th>Đánh giá</th>
+                      <th>Bình luận</th>
+                      <th>Trạng thái</th>
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="let review of paginatedReviews; let i = index"
+                      [ngClass]="{'table-light': review.status === 1, 'table-danger': review.status === 0}"
+                    >
+                      <th scope="row">{{ i + 1 + (currentPage - 1) * itemsPerPage }}</th>
+                      <td class="text-truncate" style="max-width: 100px;">
+                        {{ review.fullname }}
+                      </td>
+                      <td>{{ review.product_id }}</td>
+                      <td>{{ review.rating }}</td>
+                      <td class="text-truncate" style="max-width: 120px;">
+                        {{ review.reviews_text }}
+                      </td>
+                      <td>
+                        <span
+                          class="badge"
+                          [ngClass]="{
+                            'bg-success': review.status === 1,
+                            'bg-danger': review.status === 0
+                          }"
+                        >
+                          {{ review.status === 1 ? 'Hiện' : 'Ẩn' }}
+                        </span>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-info btn-sm"
+                          (click)="toggleReviewStatus(review.id)"
+                        >
+                          {{ review.status === 1 ? 'Ẩn Đánh Giá' : 'Hiển Thị' }}
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Phân trang -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button
+                  class="btn btn-secondary btn-sm"
+                  (click)="changePage(currentPage - 1)"
+                  [disabled]="currentPage === 1"
+                >
+                  Trước
+                </button>
+                <span>Trang {{ currentPage }} / {{ totalPages }}</span>
+                <button
+                  class="btn btn-secondary btn-sm"
+                  (click)="changePage(currentPage + 1)"
+                  [disabled]="currentPage === totalPages"
+                >
+                  Sau
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

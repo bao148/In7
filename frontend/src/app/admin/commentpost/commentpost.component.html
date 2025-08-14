@@ -1,0 +1,58 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <h3 class="mb-0">BÌNH LUẬN BÀI VIẾT</h3>
+          </div>
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="table-responsive">
+
+                <table class="table table-hover table-bordered text-nowrap" style="text-align: center;">
+                  <thead class="table-dark text-white text-center align-middle">
+                    <tr>
+                      <th>ID</th>
+                      <th>ID Bài viết</th>
+                      <th>ID Người dùng</th>
+                      <th>Bình luận</th>
+                      <th>Trạng thái</th>
+                      <!-- <th>Ngày tạo</th> -->
+                      <!-- <th>Ngày sửa</th> -->
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let commentpost of commentposts"
+                      [ngClass]="{'table-light': commentpost.status === 'visible', 'table-danger': commentpost.status === 'hidden'}">
+                      <th class="text-truncate text-center align-middle" scope="row">{{ commentpost.id }}</th>
+                      <td class="text-truncate text-center align-middle">{{ commentpost.posts_id }}</td>
+                      <td class="text-truncate text-center align-middle">{{ commentpost.users_id }}</td>
+                      <td class="text-truncate text-center align-middle" style="max-width: 120px;">{{ commentpost.comment }}</td>
+                      <td class="text-truncate text-center align-middle">
+                        <span class="badge"
+                          [ngClass]="{'bg-success': commentpost.status === 'visible', 'bg-danger': commentpost.status === 'hidden'}">
+                          {{ commentpost.status === 'visible' ? 'Hiển thị' : 'Ẩn' }}
+                        </span>
+                      </td>
+                      <!-- <td>{{ commentpost.created_at | date: 'short' }}</td> -->
+                      <!-- <td>{{ commentpost.updated_at | date: 'short' }}</td> -->
+                      <td class="text-truncate text-center align-middle">
+                        <!-- <a class="btn btn-info btn-sm" routerLink="edit/{{ commentpost.id }}">Sửa</a> -->
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteCommentPost(commentpost.id)">
+                          Xóa
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

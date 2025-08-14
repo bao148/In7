@@ -1,0 +1,145 @@
+<section class="cart-section">
+    <div class="auto-container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a routerLink="/"><span>Trang chủ</span></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Giỏ hàng</span>
+                </li>
+            </ol>
+        </div>
+        <!-- Cart Outer -->
+        <div class="cart-outer">
+            <h3 class="text-center fw-bold text-dark mb-3">Giỏ hàng của bạn</h3>
+
+            <!-- Kiểm tra giỏ hàng có trống không -->
+            <div *ngIf="cartItems.length === 0;" class="empty-cart">
+                <h4 class="text-center mb-3">Giỏ hàng của bạn đang trống!</h4>
+                <div class="text-center">
+                    <a routerLink="/product">
+                        <h5 class="mb-5 text-info"><i class="bi bi-arrow-return-left me-2"></i>Tiếp tục mua hàng</h5>
+                    </a>                      
+                </div>
+            </div>
+            
+            <div *ngIf="cartItems.length !== 0" class="exist-cart">
+                <div class="table-outer rounded">
+                    <table class="cart-table">
+                        <thead class="cart-header">
+                        <tr>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng tiền</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of cartItems">
+                              <td>
+                                <img [src]="getImageUrl(item.image)" alt="{{item.name}}" class="img-fluid" style="max-width: 100px;">
+                              </td>
+                              <td>
+                                <h4 class="prod-title">
+                                  <a class="link-dark fw-bold" [routerLink]="['/product-detail', item.id]">
+                                  {{ (item.name.length > 30 ? (item.name | slice:0:30) + '...' : item.name) }}
+                                  </a>
+                                </h4>
+                              </td>
+                              <td>
+                                <h4 class="prod-title">
+                                  <ng-container *ngIf="item.discount > 0; else noDiscount">
+                                    <span class="discount-price text-danger me-2">
+                                      {{ convertCommaToDot((item.price - (item.price * (item.discount / 100))) | number:'1.0-0') }} ₫
+                                    </span>
+                                    <span class="old-price text-dark" style="text-decoration: line-through;">
+                                      {{ convertCommaToDot(item.price | number:'1.0-0') }} ₫
+                                    </span>
+                                  </ng-container>
+                                  <ng-template #noDiscount>
+                                    <span class="current-price text-danger">
+                                      {{  convertCommaToDot(item.price | number:'1.0-0') }} ₫
+                                    </span>
+                                  </ng-template>
+                                </h4>
+                              </td>
+                              <!-- quantity -->
+                              <td>
+                                <div class="qty clearfix">
+                                    <button type="button" class="qtyminus qty-btn" (click)="decreaseQuantity(item)">-</button>
+                                    <input type="number" size="4" class="tc line-item-qty item-quantity" [(ngModel)]="item.quantity" (input)="validateQuantity(item)" min="1">
+                                    <button type="button" class="qtyplus qty-btn" (click)="increaseQuantity(item)">+</button>
+                                </div>
+                              </td>
+
+                              <td>
+                                <h4 class="prod-title">
+                                  <ng-container *ngIf="item.discount > 0; else noDiscountTotal">
+                                    <!-- Hiển thị tổng tiền sau khi giảm giá -->
+                                    {{ convertCommaToDot((item.price - (item.price * (item.discount / 100))) * item.quantity | number:'1.0-0') }} ₫
+                                  </ng-container>
+                                  <ng-template #noDiscountTotal>
+                                    <!-- Hiển thị tổng tiền nếu không có giảm giá -->
+                                    {{ convertCommaToDot(item.price * item.quantity | number:'1.0-0') }} ₫
+                                  </ng-template>
+                                </h4>
+                              </td>
+                              <td>
+                                <button (click)="removeFromCart(item.id)" type="button" class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i>Xóa</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          
+                    </table>
+                    </div>
+        
+                    <div class="cart-options clearfix">
+                      
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-danger" (click)="clearCart()"><i class="bi bi-cart-x-fill"></i> Xóa sạch giỏ</button>
+                    </div>
+                    </div>
+        
+                    <div class="clearfix">
+                    <div class="pull-right col-4">
+                        <ul class="totals-table">
+                        <li class="bg-white">
+                            <h3 class="text-center">Thông tin đơn hàng</h3>
+                        </li>
+                        <!-- Nếu ko có voucher -->
+                        <li *ngIf="!appliedVoucher" class="clearfix total"><span class="col">Tổng tiền:</span><span class="price">{{ convertCommaToDot(getTotal() | number:'1.0-0') }} ₫</span></li>
+                        <!-- Nếu có, Hiển thị voucher đã áp dụng -->
+                        <li *ngIf="appliedVoucher" class="clearfix total">
+                          <span class="col">Voucher:</span>
+                          <span class="text-success">{{ appliedVoucher.voucher_code }} - Giảm {{ appliedVoucher.discount_percent }}%</span>
+                        </li>
+
+                        <li *ngIf="appliedVoucher" class="clearfix total">
+                          <span class="col">Tổng tiền</span>
+                          <span class="price">{{ convertCommaToDot(getTotal() | number:'1.0-0') }} ₫</span> <!-- getTotal() sẽ tự tính tổng sau giảm giá -->
+                        </li>
+                        <div class="pull-left d-flex ml-2 mr-2 mt-4 mb-4">
+                          <input type="text" placeholder="Nhập mã voucher" [(ngModel)]="voucherCode" class="form-control mr-3">
+                          <button type="button" class="btn btn-success mr-2" (click)="applyVoucher()">Áp dụng</button>
+                          <button type="button" class="btn btn-danger" (click)="removeVoucher()">Xóa</button>
+                        </div>
+                        <li class="text-right">
+                            <a routerLink="/checkout" class="btn btn-info w-100">Thanh toán</a>
+                        </li>
+                        </ul>
+                        <div class="text-center">
+                            <a routerLink="/product">
+                                <h5 class="mb-0"><i class="bi bi-arrow-return-left me-2"></i>Tiếp tục mua hàng</h5>
+                            </a>                      
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- End Cart Section -->

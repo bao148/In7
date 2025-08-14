@@ -1,0 +1,29 @@
+<section class="login-section mt-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="message-box _success">
+          <div *ngIf="paymentStatus === '0'">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <h2>Thanh toán thành công</h2>
+            <p><strong>Mã giao dịch:</strong> {{ transId }}</p>
+            <p><strong>Số tiền thanh toán:</strong> {{ amount | number:'1.0-0' }} ₫</p>
+            <p><strong>Thông tin đơn hàng:</strong> {{ orderInfo }}</p>
+            <p><strong>Mã đơn hàng:</strong> {{ orderId }}</p>
+            <p>Đơn hàng của bạn đang chờ được phê duyệt!</p>
+          </div>
+        
+          <div *ngIf="paymentStatus === '1'">
+            <h2>Thanh toán thất bại.</h2>
+            <p>Lý do: {{ message }}</p>
+          </div>
+          <div *ngIf="paymentStatus === ''">
+            <p>Không có đơn hàng nào!</p>
+          </div>
+          <!-- Nút quay lại trang chủ -->
+          <a routerLink="/" class="btn btn-success mt-4 text-white">Quay lại trang chủ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

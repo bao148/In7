@@ -1,0 +1,102 @@
+<!-- Register Section -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="body-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center">Thêm tài khoản</h5>
+                <div class="table-responsive">
+                  <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
+                    <!-- Tên -->
+                    <div class="mb-3">
+                      <label for="signup-name" class="form-label">Tên:</label>
+                      <input type="text" id="signup-name" formControlName="name" required class="form-control">
+                      <small *ngIf="signupForm.get('name')?.errors?.['required'] && signupForm.get('name')?.touched" class="text-danger">
+                        Tên là bắt buộc.
+                      </small>
+                    </div>
+                    <!-- Email -->
+                    <div class="mb-3">
+                      <label for="signup-email" class="form-label">Email:</label>
+                      <input type="email" id="signup-email" formControlName="email" required class="form-control">
+                      <small *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched" class="text-danger">
+                        Email là bắt buộc.
+                      </small>
+                      <small *ngIf="signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched" class="text-danger">
+                        Email không hợp lệ.
+                      </small>
+                    </div>
+                    <!-- Mật Khẩu -->
+                    <div class="mb-3">
+                      <label for="signup-password" class="form-label">Mật Khẩu:</label>
+                      <input type="password" id="signup-password" formControlName="password" required class="form-control">
+                      <small *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched" class="text-danger">
+                        Mật khẩu là bắt buộc.
+                      </small>
+                      <small
+                      *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched"
+                      class="error-message"
+                      >Mật khẩu phải có ít nhất 6 ký tự.</small
+                    >
+                    <small
+                      *ngIf="signupForm.get('password')?.errors?.['uppercase'] && signupForm.get('password')?.touched"
+                      class="error-message"
+                      >Mật khẩu phải có ít nhất một chữ hoa.</small
+                    >
+                    <small
+                      *ngIf="signupForm.get('password')?.errors?.['number'] && signupForm.get('password')?.touched"
+                      class="error-message"
+                      >Mật khẩu phải có ít nhất một số.</small
+                    >
+                    <small
+                      *ngIf="signupForm.get('password')?.errors?.['specialChar'] && signupForm.get('password')?.touched"
+                      class="error-message"
+                      >Mật khẩu phải có ít nhất một ký tự đặc biệt.</small
+                    >
+                    </div>
+                    <!-- Xác Nhận Mật Khẩu -->
+                    <div class="mb-3">
+                      <label for="signup-confirm-password" class="form-label">Xác Nhận Mật Khẩu:</label>
+                      <input type="password" id="signup-confirm-password" formControlName="confirmPassword" required class="form-control">
+                      <small *ngIf="signupForm.get('confirmPassword')?.errors?.['required'] && signupForm.get('confirmPassword')?.touched" class="text-danger">
+                        Xác nhận mật khẩu là bắt buộc.
+                      </small>
+                      <small *ngIf="signupForm.errors?.['passwordMismatch'] && signupForm.get('confirmPassword')?.touched" class="text-danger">
+                        Mật khẩu và xác nhận mật khẩu không khớp.
+                      </small>
+                    </div>
+                    <!-- Trạng Thái -->
+                    <div class="mb-3">
+                      <label for="signup-status" class="form-label">Trạng Thái:</label>
+                      <select id="signup-status" formControlName="status" class="form-select" required>
+                        <option value="active">Hoạt động</option>
+                        <option value="inactive">Vô hiệu hóa</option>
+                      </select>
+                      <small *ngIf="signupForm.get('status')?.errors?.['required'] && signupForm.get('status')?.touched" class="text-danger">
+                        Trạng thái là bắt buộc.
+                      </small>
+                    </div>
+                    <!-- Vai Trò -->
+                    <div class="mb-3">
+                      <label for="signup-role" class="form-label">Quyền:</label>
+                      <select id="signup-role" formControlName="role" class="form-select" required>
+                        <option value="user">Người dùng</option>
+                        <option value="admin">Quản trị viên</option>
+                      </select>
+                      <small *ngIf="signupForm.get('role')?.errors?.['required'] && signupForm.get('role')?.touched" class="text-danger">
+                        Quyền là bắt buộc.
+                      </small>
+                    </div>
+                    <!-- Nút Thêm -->
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Thêm tài khoản</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

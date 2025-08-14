@@ -1,0 +1,173 @@
+<div class="user-info-container formUser">
+
+  <h2><i class="bi bi-person-circle"></i> Thông Tin Người Dùng</h2>
+    <div class="container-xl px-4 mt-4">
+      <!-- Account page navigation-->
+      <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" routerLink="/user">Hồ sơ</a>
+        <a class="nav-link" routerLink="/order-list">Đơn hàng</a>
+      </nav>
+      <hr class="mt-0 mb-4" />
+      <div class="row">
+        <div class="col-xl-4">
+          <!-- Profile picture card-->
+          <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Ảnh đại diện</div>
+            <div class="card-body text-center">
+              <!-- Profile picture image -->
+              <img
+                class="img-account-profile rounded-circle mb-2"
+                [src]="profilePicturePreview"
+                alt="User image"
+                style="width: 150px; height: 150px;"
+              />
+              <!-- Profile picture upload button -->
+              <input
+                type="file"
+                accept="image/*"
+                (change)="onFileSelected($event)"
+                class="form-control-file mt-3"
+              />
+            </div>
+          </div>
+          <button class="changepass-btn" (click)="resetLink()">ĐẶT LẠI MẬT KHẨU</button>
+          <button class="logout-btn" (click)="onLogoutConfirm()">
+            ĐĂNG XUẤT
+          </button>
+        </div>
+        <div class="col-xl-8">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <div class="card-header">Thông tin tài khoản</div>
+            <div class="card-body">
+              <form>
+                <!-- Form Group (username)-->
+                <div class="mb-3">
+                  <label class="mb-1" for="inputUsername"
+                    >Tên người dùng ( sẽ được hiển thị trên website và được thấy
+                    bởi người dùng khác )</label
+                  >
+                  <input
+                    class="form-control"
+                    id="inputUsername"
+                    name="name"
+                    [(ngModel)]="user.name"
+                    type="text"
+                    placeholder=""
+                  />
+                </div>
+                <!-- Form Group (email address)-->
+                <div class="mb-3">
+                  <label class="mb-1" for="inputEmailAddress"
+                    >Email ( bạn sẽ không thay đổi được email )</label
+                  >
+                  <input
+                    class="form-control"
+                    id="inputEmailAddress"
+                    name="email"
+                    [(ngModel)]="user.email"
+                    type="email"
+                    placeholder=""
+                    disabled
+                  />
+                </div>
+                <!-- Form Group (phone number)-->
+                <div class="mb-3">
+                  <label class="mb-1" for="inputPhone">Số điện thoại</label>
+                  <input
+                    class="form-control"
+                    id="inputPhone"
+                    name="phone"
+                    [(ngModel)]="user.phoneNumber"
+                    type="text"
+                    placeholder="Nhập số điện thoại của bạn"
+                  />
+                </div>
+
+                <!-- Tỉnh -->
+                <div class="select-wrapper mb-3">
+                  <label class="mb-1">Tỉnh Thành</label>
+                  <select
+                    class="css_select"
+                    [(ngModel)]="selectedTinh"
+                    name="tinh"
+                    (change)="loadQuanHuyen()"
+                    [ngClass]="{ 'is-invalid': errors.tinh }"
+                  >
+                    <option value="">Chọn Tỉnh Thành</option>
+                    <option *ngFor="let tinh of tinhThanh" [value]="tinh.id">
+                      {{ tinh.full_name }}
+                    </option>
+                  </select>
+                  <div class="text-danger" *ngIf="errors.tinh">
+                    {{ errors.tinh }}
+                  </div>
+                </div>
+
+                <!-- Quận -->
+                <div class="select-wrapper mb-3">
+                  <label class="mb-1">Quận Huyện</label>
+                  <select
+                    class="css_select"
+                    [(ngModel)]="selectedQuan"
+                    name="quan"
+                    (change)="loadPhuongXa()"
+                    [ngClass]="{ 'is-invalid': errors.quan }"
+                  >
+                    <option value="">Chọn Quận Huyện</option>
+                    <option *ngFor="let quan of quanHuyen" [value]="quan.id">
+                      {{ quan.full_name }}
+                    </option>
+                  </select>
+                  <div class="text-danger" *ngIf="errors.quan">
+                    {{ errors.quan }}
+                  </div>
+                </div>
+
+                <!-- Phường -->
+                <div class="select-wrapper mb-3">
+                  <label class="mb-1">Phường Xã</label>
+                  <select
+                    class="css_select"
+                    [(ngModel)]="selectedPhuong"
+                    name="phuong"
+                    [ngClass]="{ 'is-invalid': errors.phuong }"
+                  >
+                    <option value="">Chọn Phường Xã</option>
+                    <option *ngFor="let phuong of phuongXa" [value]="phuong.id">
+                      {{ phuong.full_name }}
+                    </option>
+                  </select>
+                  <div class="text-danger" *ngIf="errors.phuong">
+                    {{ errors.phuong }}
+                  </div>
+                </div>
+
+                <!-- Nhập chi tiết địa chỉ -->
+                <div class="mb-3">
+                  <label class="mb-1" for="address">Địa chỉ chi tiết</label>
+                  <input
+                    class="form-control"
+                    id="address"
+                    type="text"
+                    [(ngModel)]="user.address"
+                    name="address"
+                    placeholder="Số nhà, tên đường"
+                    [ngClass]="{ 'is-invalid': errors.address }"
+                  />
+                  <div class="text-danger" *ngIf="errors.address">
+                    {{ errors.address }}
+                  </div>
+                </div>
+
+                <!-- Save changes button-->
+                <button class="btn btn-primary" type="button" (click)="updateUser()">LƯU THAY ĐỔI</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script></script>

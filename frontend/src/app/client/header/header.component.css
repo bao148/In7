@@ -1,0 +1,70 @@
+/* Sử dụng phông chữ Roboto cho toàn bộ trang */
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif !important;
+}
+@media only screen and (max-width: 767px) {
+    .main-menu .navbar-header {
+      position: relative;
+      float: left;
+      display: flex;
+      text-align: right;
+      width: 100%;
+      padding: 8px 0px;
+      right: 0px;
+    }
+  
+    /* Căn chỉnh các phần tử trong .nav-outer để chúng nằm trên một dòng */
+    .nav-outer {
+      display: flex;
+      justify-content: space-between; /* Đảm bảo giỏ hàng, người dùng và menu đối xứng */
+      align-items: center;
+      width: 100%;
+    }
+  
+    /* Menu: Đẩy menu sang bên trái */
+    .nav-outer .main-menu {
+      order: 2; /* Menu sẽ nằm bên trái */
+      margin-right: auto; /* Đẩy menu sang trái */
+    }
+  
+    /* Các phần giỏ hàng, người dùng, tìm kiếm */
+    .nav-outer .outer-box {
+      order: 2; /* Các phần tử này sẽ nằm bên phải */
+      display: flex;
+      align-items: center;
+      gap: 15px; /* Khoảng cách giữa các phần tử */
+      justify-content: flex-end; /* Đảm bảo chúng nằm ở phía bên phải */
+    }
+  
+    /* Thêm một số điều chỉnh cho phần giỏ hàng và người dùng */
+    .nav-outer .cart-btn, 
+    .nav-outer .user-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* Đảm bảo tất cả phần tử trong navbar đều căn chỉnh đều nhau */
+    .nav-outer .outer-box .cart-btn,
+    .nav-outer .outer-box .user-btn,
+    .nav-outer .outer-box .search-box-outer {
+      margin-left: 10px; /* Khoảng cách đều giữa các phần tử */
+    }
+  }
+
+
+  /* user */
+/* Thay đổi màu chữ khi hover vào item trong dropdown */
+.dropdown-item:hover {
+  color: #000000; /* Màu chữ khi hover vào (màu đen) */
+  background-color: #1A5C48; /* Thay đổi màu nền khi hover (màu trắng) */
+}
+  
+.dropdown-user{
+  height: 35px;
+  width: 35px;
+}

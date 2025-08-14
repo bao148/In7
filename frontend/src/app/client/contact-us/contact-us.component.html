@@ -1,0 +1,92 @@
+<section class="page-title" style="background-image:url(/assets/client/images/background/10.jpg);">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            <div class="title-box">
+                <h1>Liên Hệ</h1>
+            </div>
+            <ul class="bread-crumb clearfix">
+                <li><a  routerLink="/">Trang Chủ</a></li>
+                <li>Liên Hệ</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Page Section -->
+<section class="contact-page-section">
+    <div class="auto-container">
+        <div class="row">
+            <!-- Form Column -->
+            <div class="form-column col-lg-7 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="sec-title">                           
+                        <h2>Liên Hệ Chúng Tôi</h2>
+                        <p>Để nhận tư vấn hoặc thông tin chi tiết về dịch vụ nội thất, vui lòng điền thông tin bên dưới:</p>
+                    </div>
+                    <div class="contact-form">
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                              <input type="text" formControlName="name" placeholder="Họ và Tên" required />
+                            </div>
+                      
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                              <input type="email" formControlName="email" placeholder="Email" required />
+                            </div>
+                      
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                              <input type="text" formControlName="phone" placeholder="Số Điện Thoại" required />
+                            </div>
+                      
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                              <input type="text" formControlName="company" placeholder="Tên Công Ty (nếu có)" />
+                            </div>
+                      
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                              <textarea formControlName="message" placeholder="Lời Nhắn" required></textarea>
+                            </div>
+                      
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                              <button class="theme-btn btn-style-three" type="submit" [disabled]="isSubmitting">Gửi Thông Tin</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div> 
+                    <div class="contact-info">
+                        <div class="row">
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Địa Chỉ</h4>
+                                    <p>88 Nguyễn Văn Cừ, Quận Ninh Kiều, Cần Thơ</p>
+                                </div>
+                            </div>
+
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Số Liên Hệ</h4>
+                                    <p>097 114 1140 (Hotline/Zalo)</p>
+                                    <p>0902 415 359 (Giao Hàng)</p>
+                                </div>
+                            </div>
+
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:support@noithat.com">cskh&#64;in7.com.vn</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Column -->
+            <div class="map-column col-lg-5 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.639285603764!2d105.71637046458315!3d10.034184408545471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0629f6de3edb7%3A0x527f09dbfb20b659!2zQ2FuIFRobywgTmluaCBLaeG7gXUsIEPhuqduIFRoxqEsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1727669746471!5m2!1sen!2s" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Contact Page Section -->

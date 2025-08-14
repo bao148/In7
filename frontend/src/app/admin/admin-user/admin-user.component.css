@@ -1,0 +1,374 @@
+button{
+    padding: 8px;
+    margin-right: 5px;
+}
+a{
+    padding: 8px;
+    margin-right: 5px;
+}
+
+
+/* Kiểu dáng đơn giản */
+.simple-search-input {
+    border: 2px solid #ccc; /* Viền mỏng xám nhạt */
+    border-radius: 4px; /* Bo tròn nhẹ */
+    padding: 8px 12px; /* Khoảng cách bên trong */
+    font-size: 14px; /* Kích thước chữ vừa phải */
+    color: #333; /* Màu chữ */
+    background-color: #fff; /* Nền trắng */
+    transition: border-color 0.2s ease; /* Hiệu ứng viền */
+  }
+  
+  /* Khi focus */
+  .simple-search-input:focus {
+    outline: none; /* Bỏ viền mặc định */
+    border-color: #007bff; /* Viền xanh dương nhạt */
+  }
+  
+  /* Placeholder */
+  .simple-search-input::placeholder {
+    color: #aaa; /* Màu placeholder xám nhạt */
+    font-style: normal; /* Chữ thường */
+  }
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 2px solid #007bff;
+    background-color: #ffffff;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #f8f9fa;
+    color: #adb5bd;
+    border-color: #adb5bd;
+    cursor: not-allowed;
+  }
+  
+  .pagination-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  /* Căn chỉnh các bộ lọc nằm ngang, thêm khoảng cách giữa các phần tử */
+.d-flex {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Chỉnh sửa label "Lọc" */
+.d-flex label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057; /* Màu chữ tối */
+  margin-right: 10px;
+  text-transform: uppercase; /* Chữ in hoa */
+}
+
+/* Tạo kiểu cho các ô nhập liệu và dropdown */
+.d-flex .form-control {
+  max-width: 250px; /* Đảm bảo độ rộng phù hợp */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px; /* Viền bo tròn */
+  border: 1px solid #ddd; /* Viền nhẹ */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+}
+
+/* Hiệu ứng hover và focus */
+.d-flex .form-control:hover, 
+.d-flex .form-control:focus {
+  border-color: #28a745; /* Màu xanh khi hover hoặc focus */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Hiệu ứng đổ bóng nhẹ */
+  outline: none; /* Bỏ viền ngoài khi focus */
+}
+
+/* Thêm khoảng cách và kiểu cho nút tìm kiếm */
+.d-flex .simple-search-input {
+  width: 250px;
+  padding-left: 10px;
+}
+
+/* Tạo kiểu cho dropdown và input giống nhau */
+.d-flex select.form-control {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng hover và focus cho select */
+.d-flex select.form-control:hover, 
+.d-flex select.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  outline: none;
+}
+
+/* Các bộ lọc có thêm khoảng cách */
+.d-flex .form-control {
+  margin-right: 0;
+}
+
+/* Hiệu ứng hover cho nút khi thêm tài khoản */
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+  transition: all 0.3s ease;
+}
+
+/* Đảm bảo khoảng cách cho card và bảng */
+.card-body {
+  padding: 20px;
+}
+
+/* Tạo hiệu ứng cho bảng */
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Màu nền khi hover vào dòng */
+}
+
+/* Tạo kiểu cho phân trang */
+/* Tạo kiểu cho phân trang */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+/* css phân trang */
+.pagination-btn {
+  padding: 8px 15px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  background-color: #e0e0e0;
+  border-color: #ccc;
+}
+
+.pagination-info {
+  font-size: 1rem;
+  align-self: center;
+}
+
+
+/* Toàn bộ modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ tối */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+  }
+  
+  /* Nội dung modal */
+  .modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  /* Tiêu đề modal */
+  .modal-header {
+    background-color: #f8f9fa; /* Màu nền nhạt */
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  .modal-header .close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .modal-header .close:hover {
+    color: #dc3545;
+  }
+  
+  /* Thân modal */
+  .modal-body {
+    padding: 20px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .modal-body p {
+    margin-bottom: 15px;
+  }
+  
+  .modal-body textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    transition: border-color 0.3s;
+  }
+  
+  .modal-body textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .modal-body .text-danger {
+    font-size: 0.875rem;
+    margin-top: 10px;
+  }
+  
+  /* Chân modal */
+  .modal-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa; /* Màu nền nhạt */
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .modal-footer .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .modal-footer .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .modal-footer .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .modal-footer .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Hiệu ứng xuất hiện */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #deleteModal {
+    display: none; /* Đảm bảo modal không hiển thị mặc định */
+    /* Các thuộc tính khác cho modal */
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .pagination .page-item {
+    margin: 0 5px;
+  }
+  
+  .pagination .page-link {
+    border-radius: 50px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #007bff;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .pagination .page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    pointer-events: none;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
+  .pagination .page-link:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+

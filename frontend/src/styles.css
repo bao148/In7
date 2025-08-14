@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.notyf__toast--success {
+    background-color: #4caf50 !important;
+    color: #fff;
+  }
+  
+  .notyf__toast--error {
+    background-color: #f44336 !important;
+    color: #fff;
+  }
+  
+  .notyf__toast--info {
+    background-color: #2196f3 !important;
+    color: #fff;
+  }
+  .notyf__toast--warning {
+    background-color: #ffc107 !important; /* Màu nền cảnh báo */
+    color: #000 !important; /* Màu chữ */
+  }
+  
+  .notyf__toast--warning .notyf__icon {
+    font-size: 20px; /* Kích thước icon */
+    margin-right: 8px; /* Khoảng cách giữa icon và nội dung */
+  }
+  

@@ -1,0 +1,150 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <!-- Main wrapper -->
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-lg-12 mt-2">
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">THÊM VOUCHER</h5>
+              <div class="table-responsive">
+                <form #form="ngForm" (ngSubmit)="addVoucher()">
+                  <div class="mb-3">
+                    <label for="voucher_code" class="form-label">Mã Voucher</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="voucher_code"
+                      [(ngModel)]="voucher.voucher_code"
+                      name="voucher_code"
+                      required
+                      #voucherCode="ngModel"
+                    />
+                    <div *ngIf="voucherCode.invalid && voucherCode.touched" class="text-danger">
+                      Mã voucher là bắt buộc.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Giá</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="price"
+                      [(ngModel)]="voucher.price"
+                      name="price"
+                      required
+                      #price="ngModel"
+                    />
+                    <div *ngIf="price.invalid && price.touched" class="text-danger">
+                      Giá là bắt buộc.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="discount_percent" class="form-label">Giảm giá (%)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="discount_percent"
+                      [(ngModel)]="voucher.discount_percent"
+                      name="discount_percent"
+                      min="0"
+                      max="100"
+                      #discountPercent="ngModel"
+                    />
+                    <div *ngIf="discountPercent.invalid && discountPercent.touched" class="text-danger">
+                      Giảm giá phải nằm trong khoảng từ 0 đến 100.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="valid_from" class="form-label">Ngày bắt đầu</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="valid_from"
+                      [(ngModel)]="voucher.valid_from"
+                      name="valid_from"
+                      required
+                      #validFrom="ngModel"
+                      (change)="validateDates()" 
+                    />
+                    <div *ngIf="validFrom.invalid && validFrom.touched" class="text-danger">
+                      Ngày bắt đầu là bắt buộc.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="valid_to" class="form-label">Ngày hết hạn</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="valid_to"
+                      [(ngModel)]="voucher.valid_to"
+                      name="valid_to"
+                      required
+                      #validTo="ngModel"
+                      (change)="validateDates()" 
+                    />
+                    <div *ngIf="validTo.invalid && validTo.touched" class="text-danger">
+                      Ngày hết hạn là bắt buộc.
+                    </div>
+                    <div *ngIf="dateError" class="text-danger">
+                      Ngày hết hạn không được trước ngày bắt đầu.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="status" class="form-label">Trạng thái</label>
+                    <select
+                      class="form-select"
+                      id="status"
+                      [(ngModel)]="voucher.status"
+                      name="status"
+                      required
+                      #status="ngModel"
+                    >
+                      <option value="active">Kích hoạt</option>
+                      <option value="inactive">Vô hiệu hóa</option>
+                    </select>
+                    <div *ngIf="status.invalid && status.touched" class="text-danger">
+                      Trạng thái là bắt buộc.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="quantity" class="form-label">Số lượng</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="quantity"
+                      [(ngModel)]="voucher.quantity"
+                      name="quantity"
+                      required
+                      min="1"
+                      #quantity="ngModel"
+                    />
+                    <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+                      Số lượng là bắt buộc và phải lớn hơn 0.
+                    </div>
+                  </div>
+                
+                  <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">
+                    Thêm Voucher
+                  </button>
+                
+                  <div *ngIf="form.invalid && (form.dirty || form.touched)" class="text-danger mt-2">
+                    Vui lòng kiểm tra lại thông tin trước khi gửi.
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

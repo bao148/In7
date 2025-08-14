@@ -1,0 +1,31 @@
+
+.user-info-container {
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+  }
+
+  .user-info-container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .badge {
+    justify-content: center !important; /* Căn giữa theo chiều ngang */
+    align-items: center !important; /* Căn giữa theo chiều dọc */
+    padding: 10px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo góc badge */
+    font-size: small;
+  }
+/* Căn giữa toàn bộ nội dung trong bảng */
+.table-bordered th, 
+.table-bordered td {
+  text-align: center; /* Căn giữa ngang */
+  vertical-align: middle; /* Căn giữa dọc */
+}

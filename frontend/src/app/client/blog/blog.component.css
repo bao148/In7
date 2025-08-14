@@ -1,0 +1,7 @@
+.img-fluid {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Set max height for better scaling */
+    border-radius: 8px;
+  }

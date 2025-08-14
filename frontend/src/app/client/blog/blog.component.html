@@ -1,0 +1,58 @@
+<!--Page Title-->
+<section class="page-title" style="background-image:url(/assets/client/images/background/10.jpg);">
+  <div class="auto-container">
+      <div class="inner-container clearfix">
+          <div class="title-box">
+              <h1>Bài Viết</h1>
+          </div>
+          <ul class="bread-crumb clearfix">
+              <li><a  routerLink="/">Trang Chủ</a></li>
+              <li>Bài Viết</li>
+          </ul>
+      </div>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section class="blog-section">
+    <div class="auto-container">
+        <div class="row">
+          <div *ngFor="let post of posts" class="col-lg-6 col-md-12 col-sm-12">
+            <div class="news-block-two" *ngIf="post.status === 'published'">
+              <div class="inner-box">
+                <div class="image-box">
+                  <figure class="image_url">
+                    <img [src]="getImageUrl(post.image_url)" class="img-fluid" alt="{{ post.title }}">
+                  </figure>
+                  <div >
+                    <a [routerLink]="['/blog', post.id]">
+                      <!-- <i class="fa fa-link"></i> -->
+                    </a>
+                  </div>
+                </div>
+                <div class="caption-box">
+                  <div class="inner">
+                    <h3><a [routerLink]="['blog-detail', post.id]">{{ post.title }}</a></h3>
+                    <ul class="info">
+                      <li> Ngày {{ post.created_at | date: 'dd MMMM yyyy' }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Post Share Options-->
+        <div class="styled-pagination">
+            <ul class="clearfix">
+                <li class="prev-post"><a href="#"><span class="fa fa-long-arrow-left"></span>Trước</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next-post"><a href="#">Sau<span class="fa fa-long-arrow-right"></span> </a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Blog Section -->

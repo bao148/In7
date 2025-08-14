@@ -1,0 +1,60 @@
+.element {
+    margin: 40px;
+  }
+.shop-item h3 {
+  display: -webkit-box;        /* Sử dụng flexbox để tạo hộp cho text */
+  -webkit-line-clamp: 2;       /* Số dòng hiển thị tối đa */
+  -webkit-box-orient: vertical; /* Xoay box theo chiều dọc */
+  overflow: hidden;            /* Ẩn phần vượt ra ngoài */
+  text-overflow: ellipsis;     /* Thêm dấu "..." khi nội dung quá dài */
+  height: 50px;                /* Chiều cao cố định */
+  line-height: 25px;           /* Căn chỉnh dòng */
+}
+.card {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-footer .btn {
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.price span {
+  font-size: 0.9rem;
+}
+.card-footer .btn {
+  font-size: 0.7rem; /* Giảm kích thước chữ */
+  padding: 2px 6px; /* Giảm khoảng cách bên trong nút */
+  border-radius: 3px; /* Viền bo nhỏ hơn */
+  min-width: 70px; /* Đảm bảo nút không quá nhỏ về chiều rộng */
+}
+button, a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn i {
+  margin-right: 10px; /* Tạo khoảng cách giữa icon và text */
+  font-size: 1rem; /* Kích thước icon đồng nhất */
+  vertical-align: middle; /* Đảm bảo icon thẳng hàng với chữ */
+}
+
+.btn span {
+  display: inline-block; /* Đảm bảo chữ hiển thị đúng */
+}

@@ -1,0 +1,80 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="body-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">THÊM DANH MỤC</h5>
+                            <div class="table-responsive">
+                                <form #form="ngForm" (ngSubmit)="addCategory()" enctype="multipart/form-data">
+                                    <!-- Tên danh mục với kiểm tra độ dài -->
+                                    <div class="mb-3">
+                                        <label for="category_name" class="form-label">Tên danh mục</label>
+                                        <input type="text" class="form-control" id="category_name"
+                                            [(ngModel)]="category.category_name" name="category_name" required
+                                            minlength="3" maxlength="50" #categoryName="ngModel">
+                                        <div *ngIf="categoryName.errors?.['required'] && categoryName.touched"
+                                            class="text-danger">
+                                            Tên danh mục là bắt buộc.
+                                        </div>
+                                        <div *ngIf="categoryName.errors?.['minlength'] && categoryName.touched"
+                                            class="text-danger">
+                                            Tên danh mục phải có ít nhất 3 ký tự.
+                                        </div>
+                                        <div *ngIf="categoryName.errors?.['maxlength'] && categoryName.touched"
+                                            class="text-danger">
+                                            Tên danh mục không được vượt quá 50 ký tự.
+                                        </div>
+                                    </div>
+
+                                    <!-- Mô tả với kiểm tra độ dài tối đa -->
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Mô tả</label>
+                                        <textarea class="form-control" id="description"
+                                            [(ngModel)]="category.description" name="description" required
+                                            maxlength="200" #description="ngModel"></textarea>
+                                        <div *ngIf="description.errors?.['required'] && description.touched"
+                                            class="text-danger">
+                                            Mô tả là bắt buộc.
+                                        </div>
+                                        <div *ngIf="description.errors?.['maxlength'] && description.touched"
+                                            class="text-danger">
+                                            Mô tả không được vượt quá 200 ký tự.
+                                        </div>
+                                    </div>
+
+                                    <!-- Hình ảnh với kiểm tra loại file -->
+                                    <div class="mb-3">
+                                        <label for="images" class="form-label">Hình ảnh</label>
+                                        <input type="file" class="form-control" id="images"
+                                            (change)="onFileChange($event)">
+                                        <div *ngIf="fileError" class="text-danger">
+                                            Vui lòng chỉ chọn các tệp hình ảnh (JPG, PNG).
+                                        </div>
+                                    </div>
+
+                                    <!-- Trạng thái -->
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">Trạng thái</label>
+                                        <select class="form-select" id="status" [(ngModel)]="category.status"
+                                            name="status" required #status="ngModel">
+                                            <option value="active">Kích hoạt</option>
+                                            <option value="inactive">Vô hiệu hóa</option>
+                                        </select>
+                                        <div *ngIf="status.errors?.['required'] && status.touched" class="text-danger">
+                                            Trạng thái là bắt buộc.
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Thêm Danh Mục</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

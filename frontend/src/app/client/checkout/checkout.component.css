@@ -1,0 +1,8 @@
+.is-invalid {
+    border: 1px solid red;
+}
+.text-danger {
+    font-size: 0.875em;
+    color: red;
+    margin-top: 4px;
+}

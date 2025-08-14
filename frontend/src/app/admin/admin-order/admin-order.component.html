@@ -1,0 +1,91 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <h3 class="mb-0">Đơn Hàng</h3>
+          </div>
+
+          <!-- Tab navigation -->
+          <ul class="nav nav-tabs mt-3" id="orderTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" [class.active]="activeTab === 'processing'" (click)="setActiveTab('processing')">Chờ xử lý</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" [class.active]="activeTab === 'delivering'" (click)="setActiveTab('delivering')">Đang giao</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" [class.active]="activeTab === 'canceled'" (click)="setActiveTab('canceled')">Đã hủy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" [class.active]="activeTab === 'completed'" (click)="setActiveTab('completed')">Hoàn thành</a>
+            </li>
+          </ul>
+
+          
+          <!-- Second Card for Orders -->
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <input type="text" class="form-control w-25" placeholder="Nhập tên khách hàng..." [(ngModel)]="searchTerm" (input)="filterOrdersByStatus()" />
+              </div>
+              
+          
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered text-nowrap" style="text-align: center;">
+                  <thead class="table-dark text-white text-center align-middle">
+                    <tr class="border-bottom">
+                      <th scope="col">STT</th>
+                      <th scope="col">Phương thức</th>                     
+                      <th scope="col">Tổng tiền</th>
+                      <th scope="col">Họ và tên</th> <!-- Thêm cột Họ và tên khách hàng -->
+                      <th scope="col">Số điện thoại</th>
+                      <th scope="col">Ghi Chú</th>
+                      <th scope="col">Trạng thái</th>
+                      <th scope="col">Chi tiết</th> <!-- Thêm cột nút Xem chi tiết -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of filteredOrders; let i = index">
+                      <th scope="row">{{ i + 1 }}</th>
+          
+                      <!-- <th scope="row">{{ order.id }}</th> -->
+                      <td>{{ order.payment_method }}</td>
+                      <td> {{ convertCommaToDot(order.total_amount | number:'1.0-0') }} ₫</td>
+                      <td>{{ order.fullname }}</td>  <!-- Hiển thị tên người dùng -->
+                      <td>{{ order.phone_number}}</td>
+                      <td>{{ order.note ? order.note : 'Không có ghi chú' }}</td>
+                      <td>
+                        <span [ngClass]="getStatusClass(order.status)" (click)="updateOrderStatus(order)" class="badge text-uppercase">
+                          {{ getStatusLabel(order.status) }}
+                          <i *ngIf="order.status == 'processing'||order.status == 'delivering'" class="fa fa-caret-down m-1" aria-hidden="true"></i>
+                        </span>
+                      </td>
+                      <td>
+                        <a class="btn btn-info btn-sm" routerLink="detail/{{order.id}}">Chi Tiết</a>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+                
+              </div>
+          
+              <!-- Pagination Controls -->
+              <div class="d-flex justify-content-between mt-3">
+                <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn btn-secondary">Trước</button>
+                <div>
+                  <span>{{ currentPage }} / {{ totalPages }}</span>
+                </div>
+                <button (click)="nextPage()" [disabled]="currentPage * pageSize >= totalOrders" class="btn btn-secondary">Tiếp</button>
+              </div>
+            </div>
+            
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="sidebar-page-container">
+    <div class="auto-container">
+      <div class="row clearfix">
+        <div class="content-side col-xl-12 col-lg-8 col-md-12 p-5">
+          <h3 class="text-center fw-bold text-dark mb-3">
+            Kết quả tìm kiếm cho "{{ searchValue }}" <span *ngIf="products.length > 0">({{ products.length }} sản phẩm)</span>
+          </h3>
+  
+          <!-- Thông báo lỗi nếu có -->
+          <div *ngIf="errorMessage" class="alert alert-danger text-center">
+            {{ errorMessage }}
+          </div>
+          <div class="our-shop">
+            <div class="row">
+              <div *ngFor="let product of products" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
+                <!-- Card Bootstrap -->
+                <div class="card shadow-sm border-0 h-100">
+                  <!-- Hình ảnh sản phẩm -->
+                  <div class="card-header bg-transparent position-relative p-0">
+                    <!-- Giảm giá -->
+                    <div *ngIf="product.discount > 0">
+                      <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                        -{{ product.discount }}%
+                      </span>
+                    </div>
+                    <!-- Phần nếu hết hàng -->
+                   <div *ngIf="product.quantity <= 0">
+                    <span class="badge position-absolute top-0 end-0 m-2 bg-danger text-white p-1">
+                      Hết hàng
+                    </span>
+                  </div>
+                    <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
+                  </div>
+                  <!-- Nội dung -->
+                  <div class="card-body text-center">
+                    <h6 class="card-title text-truncate" style="max-width: 200px; margin: 0 auto;">
+                      <a [routerLink]="['/product-detail', product.id]" class="text-dark text-decoration-none">
+                        {{ product.name }}
+                      </a>
+                    </h6>
+                    <div class="price mt-2">
+                      <ng-container *ngIf="product.discount > 0; else noDiscount">
+                        <span class="text-danger fw-bold">
+                           {{ convertCommaToDot(product.price - (product.price * (product.discount / 100)) | number:'1.0-0') }} ₫
+                        </span>
+                        <span class="text-muted text-decoration-line-through ms-2">
+                          {{ convertCommaToDot(product.price | number:'1.0-0') }} ₫
+                        </span>
+                      </ng-container>
+                      <ng-template #noDiscount>
+                        <span class="current-price text-danger fw-bold">
+                          {{ convertCommaToDot(product.price | number:'1.0-0') }} ₫
+                        </span>
+                      </ng-template>
+                    </div>
+                  </div>
+                  
+                  <!-- Nút -->
+                  <div class="card-footer bg-transparent d-flex justify-content-center gap-2 p-2">
+                    <button class="bi bi-cart-plus btn btn-primary btn-sm px-3 d-flex align-items-center justify-content-center gap-2" (click)="addToCart(product, quantity)">
+                      Thêm vào giỏ
+                    </button>
+                    <a [routerLink]="['/product-detail', product.id]" class="bi bi-eye btn btn-outline-secondary btn-sm px-3 d-flex align-items-center justify-content-center gap-2">
+                      Xem thêm
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

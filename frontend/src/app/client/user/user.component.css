@@ -1,0 +1,340 @@
+
+  .user-info-container {
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+  }
+
+  .user-info-container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .not-logged-in {
+    text-align: center;
+  }
+
+  .login-message {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .login-btn {
+    background-color: #007bff;
+  }
+
+  .register-btn {
+    background-color: #28a745;
+  }
+
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .register-btn:hover {
+    background-color: #218838;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .tab-link {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .tab-link:hover {
+    background-color: #ddd;
+  }
+
+  .tab-link.active {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .user-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .logout-btn {
+    padding: 10px 20px;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+
+  .logout-btn:hover {
+    background-color: #e60000;
+  }
+  .changepass-btn {
+    padding: 10px 20px;
+    background-color: #44c5ec;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+
+  .changepass-btn:hover {
+    background-color: #17a8d4;
+  }
+  .icon-success {
+    font-size: 3em;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+
+  /* Popup Success Alert */
+  .popup-success-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+
+  .popup-success-alert .popup-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .icon-success {
+    font-size: 3em;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+
+  .icon-success span {
+    font-weight: bold;
+  }
+
+  .message {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .btn-close {
+    background: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    display: inline-flex;           /* Change to inline-flex */
+    justify-content: center;       /* Center horizontally */
+    align-items: center;           /* Center vertically */
+    margin: 0 auto;                /* Center button horizontally */
+    text-align: center;            /* Ensure text is centered */
+  }
+  
+  
+
+  .btn-close:hover {
+    background: #218838;
+  }
+
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Fade Out Animation */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+
+  .img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+    color: #0061f2;
+    border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/* Wrapper để định vị mũi tên */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Đảm bảo chiếm đủ không gian */
+}
+
+.css_select {
+  width: 100%; /* Đảm bảo thẻ select rộng bằng wrapper */
+  padding: 10px; /* Khoảng cách bên trong */
+  padding-right: 30px; /* Chừa khoảng trống cho mũi tên */
+  border: 1px solid #ced4da; /* Viền mặc định */
+  border-radius: 5px; /* Góc bo tròn */
+  background-color: #ffffff; /* Màu nền */
+  color: #495057; /* Màu chữ */
+  font-size: 14px; /* Kích thước chữ */
+  appearance: none; /* Ẩn mũi tên mặc định của trình duyệt */
+  outline: none; /* Loại bỏ viền mặc định khi focus */
+  cursor: pointer; /* Con trỏ chuột */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Hiệu ứng */
+}
+
+/* Mũi tên tùy chỉnh */
+.select-wrapper::after {
+  content: '▼'; /* Mũi tên tùy chỉnh */
+  position: absolute;
+  top: 70%; /* Canh giữa theo chiều dọc */
+  right: 20px; /* Đặt ở mép phải */
+  transform: translateY(-50%); /* Dịch chuyển để canh giữa */
+  color: #007bff; /* Màu mũi tên */
+  pointer-events: none; /* Không cho mũi tên nhận sự kiện */
+}
+
+/* Hiệu ứng khi hover */
+.css_select:hover {
+  border-color: #80bdff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Hiệu ứng khi focus */
+.css_select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Khi không hợp lệ */
+.css_select.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.25);
+}
+
+.css_select.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+
+

@@ -1,0 +1,13 @@
+.swal-custom-popup {
+    font-size: 16px; /* Chỉnh kích thước chữ */
+    padding: 20px;   /* Chỉnh khoảng cách */
+  }
+  
+  .swal2-title {
+    font-size: 18px !important; /* Kích thước tiêu đề */
+  }
+  
+  .swal2-content {
+    font-size: 14px !important; /* Kích thước nội dung */
+  }
+  

@@ -1,0 +1,107 @@
+<div
+  class="page-wrapper"
+  id="main-wrapper"
+  data-layout="vertical"
+  data-navbarbg="skin6"
+  data-sidebartype="full"
+  data-sidebar-position="fixed"
+  data-header-position="fixed"
+>
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <h3 class="mb-0">SẢN PHẨM</h3>
+            <a class="btn btn-success" routerLink="add">Thêm sản phẩm</a>
+          </div>
+          <!-- Bộ lọc sản phẩm -->
+          <div class="d-flex align-items-center mt-3">
+            <label for="searchTerm" class="mr-2">Lọc:</label>
+            <input
+              type="text"
+              id="searchTerm"
+              class="form-control w-auto mr-3"
+              style="width: 200px;"
+              placeholder="Tìm kiếm sản phẩm"
+              [(ngModel)]="searchTerm"
+              (input)="filterProducts()"
+            />
+            <select class="form-control w-25 mr-3" [(ngModel)]="selectedPriceRange" (change)="filterProducts()">
+              <option value="">Tất cả mức giá ⌵</option>
+              <option value="low">Dưới 1 triệu</option>
+              <option value="medium">Từ 1 triệu-5 triệu</option>
+              <option value="high">Trên 5 triệu</option>
+            </select>
+            <select class="form-control w-25 mr-3" [(ngModel)]="selectedStatus" (change)="filterProducts()">
+              <option value="">Tất cả trạng thái ⌵</option>
+              <option value="active">Hoạt động</option>
+              <option value="inactive">Không hoạt động</option>
+            </select>
+            <label class="mr-2">Số lượng hiển thị:</label>
+            <select class="form-control w-auto ms-2" [(ngModel)]="itemsPerPage">
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="20">20</option>
+            </select>
+          </div>
+          
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap" style="text-align: center;">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>STT</th>
+                      <th>Tên sản phẩm</th>
+                      <th>Hình ảnh</th>
+                      <th>Giá</th>
+                      <th>Giảm giá (%)</th>
+                      <th>Số lượng</th>
+                      <th>Trạng thái</th>
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="let product of filteredProducts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                      [ngClass]="{ 'table-light': product.status === 'active', 'table-danger': product.status !== 'active' }"
+                    >
+                      <td>{{ product.id }}</td>
+                      <td class="text-truncate" style="max-width: 120px;">{{ product.name }}</td>
+                      <td>
+                        <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" class="img-fluid" style="max-width: 60px;" />
+                      </td>
+                      <td>{{ convertCommaToDot(product.price | number:'1.0-0') }} ₫</td>
+                      <td>{{ product.discount }}</td>
+                      <td>{{ product.quantity }}</td>
+                      <td>
+                        <span
+                          class="badge"
+                          [ngClass]="{ 'bg-success': product.status === 'active', 'bg-danger': product.status !== 'active' }"
+                        >
+                          {{ product.status === 'active' ? 'Kích hoạt' : 'Vô hiệu hóa' }}
+                        </span>
+                      </td>
+                      <td>
+                        <a class="btn btn-info btn-sm" routerLink="edit/{{ product.id }}">Sửa</a>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Xóa</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls
+                  (pageChange)="currentPage = $event"
+                  previousLabel="Trước"
+                  nextLabel="Tiếp"
+                  class="mt-3 d-flex justify-content-center"
+                ></pagination-controls>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
